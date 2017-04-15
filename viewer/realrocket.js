@@ -9,7 +9,7 @@
 		root.name = 'realRoot';
 		root.rotation.set(-Math.PI/2, 0, 0);
 
-		var rocket = assets.models.rocket;
+		var rocket = assets.models.rocket.children[0];
 		rocket.traverse(function(o)
 		{
 			switch(o.name){
@@ -28,7 +28,7 @@
 		root.add(rocket);
 
 		// place panel
-		var controls = assets.models.controlpanel;
+		var controls = assets.models.controlpanel.children[0];
 		controls.position.set(0, -6, 1);
 		controls.updateMatrix();
 		root.add(controls);

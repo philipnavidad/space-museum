@@ -85,13 +85,30 @@
 		rocketEq.scale.setScalar(2.5);
 		rocketEq.position.set(10, 6.2, -13.8);
 
-		root.add(scaleRoot, arrowRoot, marsBall, memorialRoot, rocketEq);
+		var octaweb = assets.posters.octaweb; octaweb.name = 'octaweb';
+		octaweb.scale.setScalar(7);
+		octaweb.rotation.set(0, 5*Math.PI/4, 0);
+		octaweb.position.set(14, 0, 11);
+
+		var shuttle = assets.models.shuttle.parent; shuttle.name = 'shuttle';
+		shuttle.children[0].children[0].children[0].material.map.wrapS = THREE.RepeatWrapping;
+		shuttle.position.set(-14.426798106524636, 7.5, 0.17731212399680402);
+		shuttle.rotation.set(0, 1.25, Math.PI);
+		shuttle.traverse(function(o){
+			if(o instanceof THREE.Mesh){
+				o.userData.altspace = {collider: {enabled: false}};
+				o.material.color.setScalar(0.6);
+			}
+		});
+
+		root.add(scaleRoot, arrowRoot, marsBall, memorialRoot, rocketEq, octaweb, shuttle);
 	};
 
 
 	exports.assets = {
 		models: {
 			rocket: 'models/falcon9.gltf',
+			shuttle: 'models/shuttle.gltf'
 		},
 		textures: {
 			mars_pano: 'textures/mars_pano.jpg'
@@ -103,7 +120,8 @@
 			arrow: 'textures/arrow.png',
 			memwall: 'textures/memorial.png',
 			memquote: 'textures/memorial-quote.png',
-			rocketeq: 'textures/rocket-equation.png'
+			rocketeq: 'textures/rocket-equation.png',
+			octaweb: 'textures/finishing-touches-on-octaweb.jpg'
 		}
 	};
 

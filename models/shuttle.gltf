@@ -1,0 +1,238 @@
+{
+    "accessors": {
+        "accessor_buffer_shut.layer_0": {
+            "bufferView": "bufferView_buffer_shut.layer_0",
+            "byteOffset": 0,
+            "byteStride": 12,
+            "componentType": 5126,
+            "count": 21074,
+            "max": [
+                19.36979866027832,
+                11.862799644470215,
+                10.526029586791992
+            ],
+            "min": [
+                -17.87769317626953,
+                -11.862420082092285,
+                -3.535937786102295
+            ],
+            "type": "VEC3"
+        },
+        "accessor_buffer_shut.layer_1": {
+            "bufferView": "bufferView_buffer_shut.layer_0",
+            "byteOffset": 252888,
+            "byteStride": 12,
+            "componentType": 5126,
+            "count": 21074,
+            "max": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "min": [
+                -1.0,
+                -1.0,
+                -1.0
+            ],
+            "type": "VEC3"
+        },
+        "accessor_buffer_shut.layer_2": {
+            "bufferView": "bufferView_buffer_shut.layer_0",
+            "byteOffset": 505776,
+            "byteStride": 8,
+            "componentType": 5126,
+            "count": 21074,
+            "max": [
+                0.9993721842765808,
+                0.9993721817154437
+            ],
+            "min": [
+                0.0006278764922171831,
+                0.0006278753280639648
+            ],
+            "type": "VEC2"
+        },
+        "accessor_buffer_shut.layer_3": {
+            "bufferView": "bufferView_buffer_shut.layer_1",
+            "byteOffset": 0,
+            "byteStride": 2,
+            "componentType": 5123,
+            "count": 58134,
+            "max": [
+                21073
+            ],
+            "min": [
+                0
+            ],
+            "type": "SCALAR"
+        }
+    },
+    "asset": {
+        "profile": {
+            "api": "WebGL",
+            "version": "1.0.3"
+        },
+        "version": "1.0"
+    },
+    "bufferViews": {
+        "bufferView_buffer_shut.layer_0": {
+            "buffer": "buffer_combined",
+            "byteLength": 674368,
+            "byteOffset": 0,
+            "target": 34962
+        },
+        "bufferView_buffer_shut.layer_1": {
+            "buffer": "buffer_combined",
+            "byteLength": 116268,
+            "byteOffset": 674368,
+            "target": 34963
+        }
+    },
+    "buffers": {
+        "buffer_combined": {
+            "byteLength": 790636,
+            "type": "arraybuffer",
+            "uri": "shuttle.bin"
+        }
+    },
+    "extensions": {
+        "KHR_materials_common": {
+            "lights": {}
+        }
+    },
+    "extensionsUsed": [
+        "KHR_materials_common"
+    ],
+    "images": {
+        "image_lightmap": {
+            "uri": "shuttle-lightmap.jpg"
+        }
+    },
+    "materials": {
+        "material_Material.001": {
+            "extensions": {
+                "KHR_materials_common": {
+                    "technique": "CONSTANT",
+                    "values": {
+                        "ambient": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "diffuse": "texture_Texture.001",
+                        "doubleSided": false,
+                        "emission": "texture_Texture.001",
+                        "shininess": 50,
+                        "specular": [
+                            0.5,
+                            0.5,
+                            0.5,
+                            1.0
+                        ],
+                        "transparency": 1.0,
+                        "transparent": false
+                    }
+                }
+            },
+            "name": "Material.001"
+        }
+    },
+    "meshes": {
+        "mesh_shut.layer": {
+            "name": "shut.layer",
+            "primitives": [
+                {
+                    "attributes": {
+                        "NORMAL": "accessor_buffer_shut.layer_1",
+                        "POSITION": "accessor_buffer_shut.layer_0",
+                        "TEXCOORD_0": "accessor_buffer_shut.layer_2"
+                    },
+                    "indices": "accessor_buffer_shut.layer_3",
+                    "material": "material_Material.001",
+                    "mode": 4
+                }
+            ]
+        }
+    },
+    "nodes": {
+        "node_scene_Scene_root": {
+            "children": [
+                "node_shuttle"
+            ],
+            "matrix": [
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "name": "node_scene_Scene_root"
+        },
+        "node_shuttle": {
+            "children": [],
+            "matrix": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "meshes": [
+                "mesh_shut.layer"
+            ],
+            "name": "shuttle"
+        }
+    },
+    "samplers": {
+        "sampler_default": {}
+    },
+    "scene": "scene_Scene",
+    "scenes": {
+        "scene_Scene": {
+            "extras": {
+                "active_camera": "camera_Camera",
+                "background_color": [
+                    0.05087608844041824,
+                    0.05087608844041824,
+                    0.05087608844041824
+                ],
+                "frames_per_second": 24
+            },
+            "name": "Scene",
+            "nodes": [
+                "node_scene_Scene_root"
+            ]
+        }
+    },
+    "textures": {
+        "texture_Texture.001": {
+            "format": 6408,
+            "internalFormat": 6408,
+            "sampler": "sampler_default",
+            "source": "image_lightmap"
+        }
+    }
+}
