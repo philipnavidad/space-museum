@@ -8,6 +8,12 @@
 		obj.matrix.decompose(obj.position, obj.quaternion, obj.scale);
 	}
 
+	function setInfoLink(obj, url){
+		obj.addEventListener('cursorup', function(){
+			altspace.open(url);
+		});
+	}
+
 	exports.initialize = function(env, root, assets)
 	{
 		// place display rocket
@@ -18,6 +24,7 @@
 		setTransform(assets.posters.info3, [0, 0, -2.5, 0, -1.7677669525146484, 1.7677669525146484, 0, 0, 1.7677669525146484, 1.7677669525146484, 0, 0, 1, 0.5, 0, 1]);
 		scaleRoot.add(assets.models.rocket, assets.posters.info1, assets.posters.info2, assets.posters.info3);
 		scaleRoot.position.set(-31, 0, 1.8);
+		setInfoLink(scaleRoot, 'http://www.spacex.com/falcon9');
 
 		/*
 		 * place arrows
@@ -79,6 +86,7 @@
 		assets.posters.memquote.scale.setScalar(1.5);
 		memorialRoot.add(assets.posters.memwall, assets.posters.memquote);
 		memorialRoot.position.set(1,1.3,-8);
+		setInfoLink(memorialRoot, 'https://en.wikipedia.org/wiki/List_of_spaceflight-related_accidents_and_incidents');
 
 		// add rocket equation poster
 		var rocketEq = assets.posters.rocketeq; rocketEq.name = 'rocketEq';
@@ -89,6 +97,7 @@
 		octaweb.scale.setScalar(7);
 		octaweb.rotation.set(0, 5*Math.PI/4, 0);
 		octaweb.position.set(14, 0, 11);
+		setInfoLink(octaweb, 'http://www.spacex.com/news/2006/01/01/octaweb');
 
 		var apollo13 = assets.posters.apollo13; apollo13.name = 'apollo13';
 		apollo13.position.set(0, 2.25, 5.3);
@@ -100,10 +109,21 @@
 		deltav_map.rotation.set(0, 3*Math.PI/4, 0);
 		deltav_map.position.set(-30, 1.5, 11);
 		deltav_map.material.color.setScalar(0.8)
+		setInfoLink(deltav_map, 'https://en.wikipedia.org/wiki/Delta-v_budget');
+
+		var pictureHitbox = new THREE.Mesh(
+			new THREE.PlaneBufferGeometry(1,1),
+			new THREE.MeshBasicMaterial()
+		);
+		pictureHitbox.rotation.set(0, Math.PI, 0);
 
 		var saturn = assets.posters.saturn; saturn.name = 'saturn';
 		saturn.position.set(-0.53, 5.9, -14.9);
 		saturn.scale.setScalar(1.7);
+		setInfoLink(saturn, 'https://en.wikipedia.org/wiki/Saturn');
+		var sHitbox = pictureHitbox.clone();
+		sHitbox.position.set(0, 0, 0.1);
+		saturn.add(sHitbox);
 
 		var enceladus = assets.posters.enceladus; enceladus.name = 'enceladus';
 		enceladus.position.set(-4.25, 5.9, -14.9);
@@ -111,6 +131,10 @@
 		enceladus.material.map.wrapS = THREE.ClampToEdgeWrapping;
 		enceladus.material.map.repeat.x = 1.7/1.2;
 		enceladus.material.map.offset.x = (1.7/1.2-1)/-2;
+		setInfoLink(enceladus, 'http://cosmicdiary.org/fmarchis/2017/04/13/another-smoking-gun-in-the-search-for-life-in-enceladus-ocean/');
+		var eHitbox = pictureHitbox.clone();
+		eHitbox.position.set(0, 0, 0.1);
+		enceladus.add(eHitbox);
 
 		var martian = assets.posters.martian; martian.name = 'martian';
 		martian.position.set(-21, 2, -12);
@@ -123,13 +147,18 @@
 		europa.material.map.wrapS = THREE.ClampToEdgeWrapping;
 		europa.material.map.repeat.x = 1.7/1.25;
 		europa.material.map.offset.x = (1.7/1.25-1)/-2;
+		setInfoLink(europa, 'https://en.wikipedia.org/wiki/Europa_(moon)');
+		var euHitbox = pictureHitbox.clone();
+		euHitbox.position.set(0, 0, 0.1);
+		europa.add(euHitbox);
 
 		var planetary_society = assets.posters.planetary_society; planetary_society.name = 'planetary_society';
 		planetary_society.position.set(9.5, 3, -12);
 		planetary_society.scale.setScalar(5);
 		planetary_society.material.transparent = true;
+		setInfoLink(planetary_society, 'http://planetary.org/');
 
-		var shuttle = assets.models.shuttle.parent; shuttle.name = 'shuttle';
+		/*var shuttle = assets.models.shuttle.parent; shuttle.name = 'shuttle';
 		shuttle.children[0].children[0].children[0].material.map.wrapS = THREE.RepeatWrapping;
 		shuttle.position.set(-14.426798106524636, 7.5, 0.17731212399680402);
 		shuttle.rotation.set(0, 1.25, Math.PI);
@@ -138,10 +167,10 @@
 				o.userData.altspace = {collider: {enabled: false}};
 				o.material.color.setScalar(0.6);
 			}
-		});
+		});*/
 
 		root.add(scaleRoot, arrowRoot, marsBall, memorialRoot, rocketEq, octaweb, apollo13,
-			deltav_map, saturn, enceladus, martian, europa, planetary_society, shuttle);
+			deltav_map, saturn, enceladus, martian, europa, planetary_society);
 	};
 
 
