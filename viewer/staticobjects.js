@@ -12,12 +12,12 @@
 	{
 		// place display rocket
 		var scaleRoot = new THREE.Object3D(); scaleRoot.name = 'scaleRoot';
-		setTransform(assets.models.rocket, [-0.05656854063272476, 0, 0.05656854063272476, 0, 0.05656854063272476, 0, 0.05656854063272476, 0, 0, 0.08, 0, 0, 0, 1.75, 0, 1]);
+		setTransform(assets.models.rocket, [-0.08, 0, 0, 0, 0, 0, 0.08, 0, 0, 0.08, 0, 0, 0, 1.75, 0, 1]);
 		setTransform(assets.posters.info1, [0, 0, -1.2, 0, 0, 1.2, 0, 0, 1.2, 0, 0, 0, 0, 1.5, 1, 1]);
 		setTransform(assets.posters.info2, [0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1.5, -1, 1]);
 		setTransform(assets.posters.info3, [0, 0, -2.5, 0, -1.7677669525146484, 1.7677669525146484, 0, 0, 1.7677669525146484, 1.7677669525146484, 0, 0, 1, 0.5, 0, 1]);
 		scaleRoot.add(assets.models.rocket, assets.posters.info1, assets.posters.info2, assets.posters.info3);
-		scaleRoot.position.set(-27, 0, 1.8);
+		scaleRoot.position.set(-31, 0, 1.8);
 
 		/*
 		 * place arrows
@@ -90,6 +90,45 @@
 		octaweb.rotation.set(0, 5*Math.PI/4, 0);
 		octaweb.position.set(14, 0, 11);
 
+		var apollo13 = assets.posters.apollo13; apollo13.name = 'apollo13';
+		apollo13.position.set(0, 2.25, 5.3);
+		apollo13.rotation.set(0, 3.57, 0);
+		apollo13.scale.setScalar(3)
+
+		var deltav_map = assets.posters.deltav_map; deltav_map.name = 'deltav_map';
+		deltav_map.scale.setScalar(3);
+		deltav_map.rotation.set(0, 3*Math.PI/4, 0);
+		deltav_map.position.set(-30, 1.5, 11);
+		deltav_map.material.color.setScalar(0.8)
+
+		var saturn = assets.posters.saturn; saturn.name = 'saturn';
+		saturn.position.set(-0.53, 5.9, -14.9);
+		saturn.scale.setScalar(1.7);
+
+		var enceladus = assets.posters.enceladus; enceladus.name = 'enceladus';
+		enceladus.position.set(-4.25, 5.9, -14.9);
+		enceladus.scale.set(1.7, 1.2, 1);
+		enceladus.material.map.wrapS = THREE.ClampToEdgeWrapping;
+		enceladus.material.map.repeat.x = 1.7/1.2;
+		enceladus.material.map.offset.x = (1.7/1.2-1)/-2;
+
+		var martian = assets.posters.martian; martian.name = 'martian';
+		martian.position.set(-21, 2, -12);
+		martian.scale.setScalar(4);
+		martian.material.color.setScalar(0.7);
+
+		var europa = assets.posters.europa; europa.name = 'europa';
+		europa.position.set(3.2, 5.9, -14.9);
+		europa.scale.set(1.7, 1.25, 1);
+		europa.material.map.wrapS = THREE.ClampToEdgeWrapping;
+		europa.material.map.repeat.x = 1.7/1.25;
+		europa.material.map.offset.x = (1.7/1.25-1)/-2;
+
+		var planetary_society = assets.posters.planetary_society; planetary_society.name = 'planetary_society';
+		planetary_society.position.set(9.5, 3, -12);
+		planetary_society.scale.setScalar(5);
+		planetary_society.material.transparent = true;
+
 		var shuttle = assets.models.shuttle.parent; shuttle.name = 'shuttle';
 		shuttle.children[0].children[0].children[0].material.map.wrapS = THREE.RepeatWrapping;
 		shuttle.position.set(-14.426798106524636, 7.5, 0.17731212399680402);
@@ -101,7 +140,8 @@
 			}
 		});
 
-		root.add(scaleRoot, arrowRoot, marsBall, memorialRoot, rocketEq, octaweb, shuttle);
+		root.add(scaleRoot, arrowRoot, marsBall, memorialRoot, rocketEq, octaweb, apollo13,
+			deltav_map, saturn, enceladus, martian, europa, planetary_society, shuttle);
 	};
 
 
@@ -121,7 +161,14 @@
 			memwall: 'textures/memorial.png',
 			memquote: 'textures/memorial-quote.png',
 			rocketeq: 'textures/rocket-equation.png',
-			octaweb: 'textures/finishing-touches-on-octaweb.jpg'
+			octaweb: 'textures/finishing-touches-on-octaweb.jpg',
+			apollo13: 'textures/Apollo-13-movie-poster.jpg',
+			deltav_map: 'textures/AAGJvD1.png',
+			saturn: 'textures/cassini_20170209-home.jpg',
+			enceladus: 'textures/Enceladus_craters_and_complex_fractured_terrains_1079x809.jpg',
+			martian: 'textures/martian_movie-poster-new.jpg',
+			europa: 'textures/pia19048.jpg',
+			planetary_society: 'textures/planetary-society.png'
 		}
 	};
 
