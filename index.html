@@ -11,18 +11,15 @@
 		<script src="https://rawgit.com/stevenvergenz/altspace-diorama/v1.1.2/dist/diorama.js"></script>
 		<!--script src="../altspace-diorama/dist/diorama.js"></script-->
 		<script src="viewer/realrocket.js"></script>
-		<script src="viewer/staticobjects.js"></script>
 	</head>
 	<body>
 		<script>
 			var diorama = new Diorama({gridOffset: [0,-20,0], fullspace: true});
 			RealRocket.position = [0, 0, 0];
-			StaticObjects.position = [0,0,0];
 
 			// hack
-			StaticObjects.needsSkeleton = true;
 
-			diorama.start(RealRocket, StaticObjects);
+			diorama.start(RealRocket);
 		</script>
 	</body>
 </html>
